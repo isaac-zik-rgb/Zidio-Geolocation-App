@@ -2,15 +2,16 @@
 import { Link } from "react-router-dom";
 
 
-const SignIn = () => {
+
+const Sigup = () => {
   return (
     <div className="h-screen flex justify-center items-center">
       <div className="w-1/2 hidden sm:block">
-       
+        
       </div>
-      <div className="sm:w-1/2 ">
+      <div className="sm:w-1/2 py-8">
         <div className="flex flex-col justify-center items-center gap-4">
-          <h2 className="font-bold text-3xl">Sign in into your account </h2>
+          <h2 className="font-bold text-3xl">Sign up to your account</h2>
           <p className="font-medium text-lg text-gray-500 pb-4">
             Enter your details below
           </p>
@@ -33,6 +34,20 @@ const SignIn = () => {
           <div className="flex flex-col gap-1">
             <label
               className="font-medium text-base text-gray-700"
+              htmlFor="tel"
+            >
+              Phone number
+            </label>
+            <input
+              className="border rounded-lg py-[10px] px-[14px]"
+              type="tel"
+              placeholder="enter phone number..."
+              required
+            />
+          </div>
+          <div className="flex flex-col gap-1">
+            <label
+              className="font-medium text-base text-gray-700"
               htmlFor="password"
             >
               Password
@@ -46,33 +61,51 @@ const SignIn = () => {
           </div>
           <div className="flex justify-between">
             <div className="flex gap-1">
-              <input type="checkbox" name="remember" id="remember" />
-              <label htmlFor="remember">Remember me</label>
+              <input type="checkbox" name="agree" id="agree" />
+              <label className="text-xs font-medium" htmlFor="agree">
+                I agree with the <span className="text-blue-800">Terms</span>{" "}
+                and <span className="text-blue-800">Condition</span>
+              </label>
             </div>
-            <Link
-              to="password_reset"
-              className="font-medium text-xs text-blue-800"
-            >
-              Forgot your password?
-            </Link>
           </div>
           <div className="flex flex-col gap-4 justify-center items-center">
             <button
-              type="button"
+              type="submit"
               className="py-3 px-4 w-full rounded-md bg-blue-800 border-none text-white"
             >
-              Sign In
+              Sign Up
             </button>
             <div className=" w-full flex flex-row text-black gap-4 items-center">
               <div className="w-full h-[1px] opacity-20 bg-black"></div>
               <p className="text-nowrap">or continue with</p>
               <div className=" w-full h-[1px] opacity-20 bg-black"></div>
             </div>
-            
+            {/*
+            <div className="flex gap-4 justify-center items-center">
+              <div
+                className="w-[60px] h-[41px] bg-white flex items-center justify-center  rounded-md"
+                style={{ boxShadow: "0px 4px 8px 0px #8D8D8D" }}
+              >
+                <Icon icon="flat-color-icons:google" />
+              </div>
+
+              <div
+                className="w-[60px] h-[41px] bg-white flex items-center justify-center  rounded-md"
+                style={{ boxShadow: "0px 4px 8px 0px #8D8D8D" }}
+              >
+                <Icon icon="logos:facebook" />
+              </div>
+              <div
+                className="w-[60px] h-[41px] bg-white flex items-center justify-center  rounded-md"
+                style={{ boxShadow: "0px 4px 8px 0px #8D8D8D" }}
+              >
+                <Icon icon="ri:linkedin-fill" />
+              </div>
+            </div>*/}
             <div className="flex gap-2 text-xs font-medium text-center">
-              <p className="text-gray-800 ">Don’t have an account?</p>
-              <Link to="/auth/signup" className="text-blue-800">
-                Sign up
+              <p className="text-gray-800 ">Already have an account?</p>
+              <Link to="/auth" className="text-blue-800">
+                Sign in
               </Link>
             </div>
           </div>
@@ -81,4 +114,5 @@ const SignIn = () => {
     </div>
   );
 };
-export default SignIn;
+
+export default Sigup;
