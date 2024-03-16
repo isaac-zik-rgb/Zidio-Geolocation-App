@@ -1,11 +1,15 @@
 
 import { Link } from "react-router-dom";
+import Navbar from "./NavBar";
 
 
 
 const Sigup = () => {
   return (
     <div className="h-screen flex justify-center items-center">
+      <section>
+        <Navbar/>
+      </section>
       <div className="w-1/2 hidden sm:block">
         
       </div>
