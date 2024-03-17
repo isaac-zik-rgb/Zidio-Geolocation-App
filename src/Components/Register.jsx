@@ -1,19 +1,16 @@
 
 import { Link } from "react-router-dom";
 import Navbar from "./NavBar";
+import Footer from "./Footer";
 
 
 
 const Sigup = () => {
   return (
+    <>
+    <Navbar/>
     <div className="h-screen flex justify-center items-center">
-      <section>
-        <Navbar/>
-      </section>
-      <div className="w-1/2 hidden sm:block">
-        
-      </div>
-      <div className="sm:w-1/2 py-8">
+      <div className="sm:w-1/2 py-8 mt-20">
         <div className="flex flex-col justify-center items-center gap-4">
           <h2 className="font-bold text-3xl">Sign up to your account</h2>
           <p className="font-medium text-lg text-gray-500 pb-4">
@@ -116,6 +113,8 @@ const Sigup = () => {
         </form>
       </div>
     </div>
+    <div className="mt-10"><Footer/></div>
+    </>
   );
 };
 

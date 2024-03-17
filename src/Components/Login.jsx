@@ -1,20 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Navbar from "./NavBar";
+import Footer from "./Footer";
 
 
 const SignIn = () => {
     return (
+    <>
+    <Navbar/>
     <div className="h-screen flex justify-center items-center">
-        <section>
-            <Navbar/>
-        </section>
-    <div className="w-1/2 hidden sm:block">
-
-    </div>
-    <div className="sm:w-1/2 ">
+    <div className="sm:w-1/2 py-8 ">
         <div className="flex flex-col justify-center items-center gap-4">
-            <h2 className="font-bold text-3xl text-red-500">Sign in into your account </h2>
+            <h2 className="font-bold text-3xl">Sign in into your account </h2>
             <p className="font-medium text-lg text-gray-500 pb-4">
             Enter your details below
             </p>
@@ -83,6 +80,8 @@ const SignIn = () => {
         </form>
     </div>
     </div>
+    <Footer/>
+    </>
     );
 };
 export default SignIn;
