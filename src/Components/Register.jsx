@@ -21,14 +21,14 @@ const Sigup = () => {
           <div className="flex flex-col gap-1">
             <label
               className="font-medium text-base text-gray-700"
-              htmlFor="email"
+              htmlFor="full name"
             >
-              Email
+              Full Name
             </label>
             <input
               className="border rounded-lg py-[10px] px-[14px]"
-              type="email"
-              placeholder="Your email..."
+              type="full name"
+              placeholder="Your full name..."
               required
             />
           </div>
@@ -42,7 +42,21 @@ const Sigup = () => {
             <input
               className="border rounded-lg py-[10px] px-[14px]"
               type="tel"
-              placeholder="enter phone number..."
+              placeholder="Enter phone number..."
+              required
+            />
+          </div>
+          <div className="flex flex-col gap-1">
+            <label
+              className="font-medium text-base text-gray-700"
+              htmlFor="username"
+            >
+              Preferred Username
+            </label>
+            <input
+              className="border rounded-lg py-[10px] px-[14px]"
+              type="username"
+              placeholder="Enter Username..."
               required
             />
           </div>
