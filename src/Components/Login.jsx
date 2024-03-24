@@ -20,14 +20,14 @@ const SignIn = () => {
             <div className="flex flex-col gap-1">
             <label
                 className="font-medium text-base text-gray-700"
-                htmlFor="email"
+                htmlFor="username"
             >
-                Email
+                Username
             </label>
             <input
                 className="border rounded-lg py-[10px] px-[14px]"
-                type="email"
-                placeholder="Your email..."
+                type="username"
+                placeholder="Your username..."
                 required
             />
         </div>
