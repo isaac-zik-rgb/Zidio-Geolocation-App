@@ -95,31 +95,9 @@ const Sigup = () => {
               <p className="text-nowrap">or continue with</p>
               <div className=" w-full h-[1px] opacity-20 bg-black"></div>
             </div>
-            {/*
-            <div className="flex gap-4 justify-center items-center">
-              <div
-                className="w-[60px] h-[41px] bg-white flex items-center justify-center  rounded-md"
-                style={{ boxShadow: "0px 4px 8px 0px #8D8D8D" }}
-              >
-                <Icon icon="flat-color-icons:google" />
-              </div>
-
-              <div
-                className="w-[60px] h-[41px] bg-white flex items-center justify-center  rounded-md"
-                style={{ boxShadow: "0px 4px 8px 0px #8D8D8D" }}
-              >
-                <Icon icon="logos:facebook" />
-              </div>
-              <div
-                className="w-[60px] h-[41px] bg-white flex items-center justify-center  rounded-md"
-                style={{ boxShadow: "0px 4px 8px 0px #8D8D8D" }}
-              >
-                <Icon icon="ri:linkedin-fill" />
-              </div>
-            </div>*/}
-            <div className="flex gap-2 text-xs font-medium text-center">
+              <div className="flex gap-2 text-xs font-medium text-center">
               <p className="text-gray-800 ">Already have an account?</p>
-              <Link to="/auth" className="text-blue-800">
+              <Link to="/auth/" className="text-blue-800">
                 Sign in
               </Link>
             </div>

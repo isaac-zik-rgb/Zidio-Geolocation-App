@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import Navbar from "./NavBar";
 import Footer from "./Footer";
@@ -58,12 +57,14 @@ const SignIn = () => {
             </Link>
             </div>
             <div className="flex flex-col gap-4 justify-center items-center">
-            <button
+           <Link to= "/dashboard">
+             <button 
                 type="button"
                 className="py-3 px-4 w-full rounded-md bg-blue-800 border-none text-white"
             >
                 Sign In
             </button>
+            </Link>
             <div className=" w-full flex flex-row text-black gap-4 items-center">
                 <div className="w-full h-[1px] opacity-20 bg-black"></div>
                 <p className="text-nowrap">or continue with</p>
@@ -72,7 +73,7 @@ const SignIn = () => {
             
             <div className="flex gap-2 text-xs font-medium text-center">
                 <p className="text-gray-800 ">Don’t have an account?</p>
-                <Link to="/auth/signup" className="text-blue-800">
+                <Link to="/auth/SignUp" className="text-blue-800">
                 Sign up
                 </Link>
             </div>
