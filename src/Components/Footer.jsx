@@ -1,10 +1,3 @@
-
-// import linkedIn from "../../assets/linkedIn-icon.png";
-// import x from "../../assets/x-icon.png";
-// import facebook from "../../assets/facebook-icon.png";
-// import instagram from "../../assets/instagram-icon.png";
-import React from "react";
-
 export default function Footer() {
   const bgColor = "bg-blue-900";
 
