@@ -16,8 +16,13 @@ const Register = () => {
           </div>
 
           <form className="mt-5">
+
             <div className="">
-              <input className="border rounded-lg py-[10px] px-[14px] w-[400px]" type="text" placeholder="Full name" name="Full-name" required/>
+              <input className="border rounded-lg py-[10px] px-[14px] w-[400px]" type="text" placeholder="Fullname" name="Full-name" required/>
+            </div>
+
+            <div className="mt-7">
+              <input className="border rounded-lg py-[10px] px-[14px] w-[400px]" type="email" placeholder="Email" name="email" required/>
             </div>
 
             <div className="mt-7">
