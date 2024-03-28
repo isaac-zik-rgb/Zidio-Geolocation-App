@@ -1,10 +1,53 @@
-
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "./NavBar";
 import Footer from "./Footer";
 
 
 const Register = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [username, setUsername] = useState("");
+  const [name, setFullName] = useState("");
+  
+  //Function to handle form submission
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    //Create a new user object
+    const user = {
+      name,
+      email,
+      phoneNumber,
+      username,
+      password,
+    };
+    try {
+      //Send the user object to the server
+      const response = await fetch("http://localhost:3000/api/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(user),
+      });
+
+      if (response.ok) {
+        //Redirect the user to the login page
+        console.log("User created successfully");
+        window.location.href = "/login";
+      } else {
+        //Display an error message
+        console.log("Sign up failed");
+        console.log(response);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+     
+
   return (
     <div>
       <Navbar/>
@@ -18,23 +61,43 @@ const Register = () => {
           <form className="mt-5">
 
             <div className="">
-              <input className="border rounded-lg py-[10px] px-[14px] w-[400px]" type="text" placeholder="Fullname" name="Full-name" required/>
+              <input className="border rounded-lg py-[10px] px-[14px] w-[400px]" type="text" placeholder="Fullname"
+               name="name"
+               value={name}
+                onChange={(e) => setFullName(e.target.value)} 
+               required/>
             </div>
 
             <div className="mt-7">
-              <input className="border rounded-lg py-[10px] px-[14px] w-[400px]" type="email" placeholder="Email" name="email" required/>
+              <input className="border rounded-lg py-[10px] px-[14px] w-[400px]" type="email" placeholder="Email" 
+              name="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required/>
             </div>
 
             <div className="mt-7">
-              <input className="border rounded-lg py-[10px] px-[14px] w-[400px]" type="text" placeholder="Phone" name="tel" required/>
+              <input className="border rounded-lg py-[10px] px-[14px] w-[400px]" type="text" placeholder="Phone" 
+              name="phoneNumber"
+              value={phoneNumber}
+              onChange={(e) => setPhoneNumber(e.target.value)}
+              required/>
             </div>
 
             <div className="mt-7">
-              <input className="border rounded-lg py-[10px] px-[14px] w-[400px]" type="text" placeholder="Username" name="username" required/>
+              <input className="border rounded-lg py-[10px] px-[14px] w-[400px]" type="text" placeholder="Username"
+              name="username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              required/>
             </div>
 
             <div className="mt-7">
-              <input className="border rounded-lg py-[10px] px-[14px] w-[400px]" type="text" placeholder="Password" name="password" required/>
+              <input className="border rounded-lg py-[10px] px-[14px] w-[400px]" type="password" placeholder="Password" 
+              name="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required/>
             </div>
 
             <div className="flex justify-center gap-2 mt-6">
@@ -43,7 +106,9 @@ const Register = () => {
             </div>
 
             <div className="flex flex-col gap-4 justify-center items-center mt-7">
-              <button type="submit" className="py-3 px-4 w-full rounded-md bg-gray-800 border-none text-white">Sign Up</button>
+              <button type="button"
+              onClick={handleSubmit} 
+              className="py-3 px-4 w-full rounded-md bg-gray-800 border-none text-white">Sign Up</button>
 
               <div className=" w-full flex flex-row text-black gap-4 items-center">
                 <div className="w-full h-[1px] opacity-20 bg-black"></div>
@@ -66,6 +131,7 @@ const Register = () => {
     </div>
   )
 }
+
 export default Register
 // const Sigup = () => {
 //   return (

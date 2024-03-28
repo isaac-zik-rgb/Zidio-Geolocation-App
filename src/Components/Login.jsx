@@ -1,8 +1,50 @@
 import { Link } from "react-router-dom";
+
+import React, { useState } from "react";
 import Navbar from "./NavBar";
 import Footer from "./Footer";
 
 const Register = () => {
+
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        //create user
+        const user = {
+            email,
+            password,
+        };
+        try {
+            const response = await fetch("http://localhost:3000/api/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(user),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        const { token } = data;
+        console.log("Token:", token);
+        localStorage.setItem("token", token);
+        window.location.href = "/dashboard";
+
+       
+      } else {
+        const { message } = await response.json();
+        //Display an error message
+        console.log("logined failed");
+        console.log(response);
+      }
+         }catch(error) {
+            console.log(error);
+        }
+
+    };
     return (
     <div>
         <Navbar/>
@@ -15,11 +57,19 @@ const Register = () => {
 
                 <form className="mt-5">
                     <div className="mt-7">
-                        <input className="border rounded-lg py-[10px] px-[14px] w-[400px]" type="text" placeholder="Username" name="username" required/>
+                        <input className="border rounded-lg py-[10px] px-[14px] w-[400px]" type="email" placeholder="Email" 
+                        name="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        required/>
                     </div>
 
                     <div className="mt-7">
-                        <input className="border rounded-lg py-[10px] px-[14px] w-[400px]" type="text" placeholder="Password" name="password" required/>
+                        <input className="border rounded-lg py-[10px] px-[14px] w-[400px]" type="text" placeholder="Password"
+                        name="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required/>
                     </div>
 
                     <div className="flex justify-between gap-2 mt-8">
@@ -31,9 +81,11 @@ const Register = () => {
                     </div>
 
                     <div className="mt-16">
-                        <Link to= "/dashboard"> 
-                            <button type="button" className="py-3 px-4 w-full rounded-md bg-gray-800 border-none text-white">Sign In</button>
-                        </Link>
+                        
+                            <button type="button"
+                            onClick={handleSubmit} 
+                            className="py-3 px-4 w-full rounded-md bg-gray-800 border-none text-white">Sign In</button>
+                        
 
                         <div className=" w-full flex flex-row text-black gap-4 items-center mt-3">
                             <div className="w-full h-[1px] opacity-20 bg-black"></div>
@@ -56,9 +108,9 @@ const Register = () => {
             <Footer/>
             </div>
         </div>
-    )
-}
-export default Register
+    );
+    }
+export default Register;
 
 // const SignIn = () => {
 //     return (
