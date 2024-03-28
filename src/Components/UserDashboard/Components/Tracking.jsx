@@ -1,7 +1,7 @@
 
  const Tracking = () => {
     return (
-      <div>Tracking</div>
+      <div className="px-3 py-6">Tracking</div>
     )
   }
   
