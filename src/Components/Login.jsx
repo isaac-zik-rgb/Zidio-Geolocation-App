@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'
 
 import React, { useState } from "react";
 import Navbar from "./NavBar";
@@ -8,7 +10,12 @@ const Register = () => {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [showPassword, setShowPassword] = useState(false);
 
+    const togglePasswordVisiblity = () => {
+        setShowPassword((prevShowPassword) => !prevShowPassword);
+    };
+    var displaymessage = "";
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -36,9 +43,10 @@ const Register = () => {
        
       } else {
         const { message } = await response.json();
+        displaymessage = message;
         //Display an error message
-        console.log("logined failed");
-        console.log(response);
+        console.log("logined failed with message:", message);
+      
       }
          }catch(error) {
             console.log(error);
@@ -53,6 +61,8 @@ const Register = () => {
                 <div className="text-center">
                 <h2 className="font-bold text-3xl tracking-widest">SIGN IN HERE</h2>
                 <p className="font-medium text-[13px] text-gray-500 pb-4 mt-1">Enter Your Details Below</p>
+                <h3 className="text-red-500">{displaymessage}</h3>
+            
                 </div>
 
                 <form className="mt-5">
@@ -65,11 +75,18 @@ const Register = () => {
                     </div>
 
                     <div className="mt-7">
-                        <input className="border rounded-lg py-[10px] px-[14px] w-[400px]" type="text" placeholder="Password"
+                        <input className="border rounded-lg py-[10px] px-[14px] w-[400px]"
+                        type={showPassword ? "text" : "password"} 
+                        placeholder="**************************"
                         name="password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         required/>
+                        <FontAwesomeIcon
+                        icon={showPassword ? faEye : faEyeSlash}
+                        onClick={togglePasswordVisiblity}
+                        className="absolute top-1/2 transform -translate-y-1/2  cursor-pointer"
+                        />
                     </div>
 
                     <div className="flex justify-between gap-2 mt-8">
@@ -95,7 +112,7 @@ const Register = () => {
                         
                         <div className="flex gap-2 text-xs font-medium text-center justify-center mt-10">
                             <p className="text-gray-800 ">Don’t have an account?</p>
-                            <Link to="/auth/SignUp" className="text-blue-800">
+                            <Link to="/register" className="text-blue-800">
                             Sign up
                             </Link>
                         </div>

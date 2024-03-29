@@ -32,15 +32,18 @@ const Register = () => {
         },
         body: JSON.stringify(user),
       });
-
+      
       if (response.ok) {
         //Redirect the user to the login page
+       
         console.log("User created successfully");
         window.location.href = "/login";
       } else {
         //Display an error message
+        const data = await response.json();
+        const { message } = data;
         console.log("Sign up failed");
-        console.log(response);
+        console.log(message);
       }
     } catch (error) {
       console.log(error);
